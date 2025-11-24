@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-usuarios',
-  imports: [],
-  templateUrl: './usuarios.html',
-  styleUrl: './usuarios.scss',
+  templateUrl: './usuarios.component.html'
 })
-export class Usuarios {
-
+export class UsuariosComponent {
+  usuarios = [
+    { id: 1, nombre: 'Jaime Valencia', rol: 'Admin' },
+    { id: 2, nombre: 'Carlos Pérez', rol: 'User' },
+    { id: 3, nombre: 'Ana López', rol: 'Supervisor' }
+  ];
 }
