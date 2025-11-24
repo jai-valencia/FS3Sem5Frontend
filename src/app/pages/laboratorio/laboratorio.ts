@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
+  imports: [FormsModule, CommonModule],
   templateUrl: './laboratorio.html'
+  
 })
 export class LaboratorioComponent {
   labs = [

@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   private tokenKey = 'app_token';
+  private platformId = inject(PLATFORM_ID);
 
   constructor() {}
 
@@ -17,7 +19,10 @@ export class AuthService {
       const fakeJwt =
         'eyFakeJwtToken_123456.ABCDEF.GHIJK'; // Token falso
 
-      localStorage.setItem(this.tokenKey, fakeJwt);
+      // Solo accede a localStorage en el navegador
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem(this.tokenKey, fakeJwt);
+      }
       return true;
     }
 
@@ -25,14 +30,22 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(this.tokenKey);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem(this.tokenKey);
+    }
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem(this.tokenKey);
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem(this.tokenKey);
+    }
+    return false; // En el servidor, siempre retorna false
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem(this.tokenKey);
+    }
+    return null; // En el servidor, no hay token
   }
 }

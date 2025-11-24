@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 import { CommonModule } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './login.html',
 })
 export class LoginComponent {
 
   username = '';
   password = '';
-  error = false;
+  errorMessage = '';
 
   constructor(private auth: AuthService, private router: Router) {}
 
@@ -24,7 +22,7 @@ export class LoginComponent {
     const ok = this.auth.login(this.username, this.password);
 
     if (!ok) {
-      this.error = true;
+      this.errorMessage = 'Usuario o contraseña incorrectos';
       return;
     }
 
