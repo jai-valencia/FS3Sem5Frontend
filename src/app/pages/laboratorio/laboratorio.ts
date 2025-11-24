@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-laboratorio',
-  imports: [],
-  templateUrl: './laboratorio.html',
-  styleUrl: './laboratorio.scss',
+  templateUrl: './laboratorio.html'
 })
-export class Laboratorio {
-
+export class LaboratorioComponent {
+  labs = [
+    { id: 1, nombre: 'Lab Central', estado: 'Operativo' },
+    { id: 2, nombre: 'Lab Norte', estado: 'Mantenimiento' }
+  ];
 }

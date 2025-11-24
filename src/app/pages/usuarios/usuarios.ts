@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html'
+  templateUrl: './usuarios.html'
 })
 export class UsuariosComponent {
   usuarios = [
