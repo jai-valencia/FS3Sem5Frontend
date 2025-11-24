@@ -6,7 +6,7 @@ import { LaboratorioComponent } from './pages/laboratorio/laboratorio';
 import { ExamenesComponent } from './pages/examenes/examenes';
 import { AuthGuard } from './guards/auth-guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   
   { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
