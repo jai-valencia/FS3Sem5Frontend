@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-examenes',
-  imports: [],
-  templateUrl: './examenes.html',
-  styleUrl: './examenes.scss',
+  templateUrl: './examenes.html'
 })
-export class Examenes {
-
+export class ExamenesComponent {
+  examenes = [
+    { id: 101, tipo: 'Drogas', resultado: 'Negativo' },
+    { id: 102, tipo: 'Alcohol', resultado: 'Positivo' }
+  ];
 }
