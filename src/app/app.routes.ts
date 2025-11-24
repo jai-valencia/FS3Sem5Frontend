@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { UsuariosComponent } from './pages/usuarios/usuarios.component';
-import { LaboratorioComponent } from './pages/laboratorio/laboratorio.component';
-import { ExamenesComponent } from './pages/examenes/examenes.component';
-import { AuthGuard } from './guards/auth.guard';
+import { LoginComponent } from './pages/login/login';
+import { UsuariosComponent } from './pages/usuarios/usuarios';
+import { LaboratorioComponent } from './pages/laboratorio/laboratorio';
+import { ExamenesComponent } from './pages/examenes/examenes';
+import { AuthGuard } from './guards/auth-guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
