@@ -1,11 +1,13 @@
-FROM node:20-alpine
+FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build
-RUN npm install -g http-server
+RUN npm run build -- --output-path=./dist/frontend-microservicios
+
+FROM nginx:alpine
 COPY --from=build /app/dist/frontend-microservicios /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 8080
-CMD ["http-server", "dist/frontend-microservicios", "-p", "8080"]
+RUN chown -R nginx:nginx /usr/share/nginx/html 
+EXPOSE 80 
+CMD ["nginx", "-g", "daemon off;"]
