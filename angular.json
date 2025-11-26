@@ -33,7 +33,7 @@
               "bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "outputMode": "browser"
+            "outputMode": "static"
           },
           "configurations": {
             "production": {
